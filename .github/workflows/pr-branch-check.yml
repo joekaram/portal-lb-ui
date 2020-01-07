@@ -23,6 +23,7 @@ jobs:
             ${{ runner.os }}-npm-$GITHUB_REPOSITORY
 
     - name: Install Dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
       run: npm ci
                 
     - name: Build
