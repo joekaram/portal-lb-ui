@@ -9,15 +9,18 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '11.x'
+
     - name: Cache node modules
       uses: actions/cache@v1
       with:
         path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+            ${{ runner.os }}-npm-${{ env.branch-name }}-
+            ${{ runner.os }}-npm-
 
     - name: Install Dependencies
       run: npm ci
