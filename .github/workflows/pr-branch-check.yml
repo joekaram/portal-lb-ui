@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: action/checkout@v1
+    - uses: actions/checkout@v1
 
     - name: Cache node modules
       uses: actions/cache@v1
@@ -18,8 +18,9 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+
     - name: Install Dependencies
-      run: npm install
+      run: npm ci
                 
     - name: Build
-      run: npm build
+      run: npm run build
