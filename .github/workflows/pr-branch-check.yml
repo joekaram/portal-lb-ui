@@ -6,7 +6,8 @@ on:
       - master
 
 jobs:
-  build:
+  build_and_test:
+    name: Build artifact and run test suites
     runs-on: ubuntu-latest
     
     steps:
