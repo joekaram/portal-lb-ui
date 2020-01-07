@@ -2,7 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Document from "@/utils/document";
 
-import TestPage from "@/views/TestPage";
+import WelcomePage from "@/views/WelcomePage";
 import NotFoundPage from "@/views/NotFoundPage";
 
 Vue.use(Router);
@@ -13,13 +13,13 @@ const router = new Router({
         /* ========== GUEST ROUTES ========== */
         {
             path: "/",
-            name: "test-page",
-            component: TestPage,
+            name: "welcome-page",
+            component: WelcomePage,
             meta: { 
                 requiresAuth: false,
-                title: "Test Page | Provider",
+                title: "Welcome | Portal LB",
                 metaTags: [
-                    { name: "description", content: "This is the description of the test page." },
+                    { name: "description", content: "Welcome to Portal LB!" },
                 ]
             }
         },
