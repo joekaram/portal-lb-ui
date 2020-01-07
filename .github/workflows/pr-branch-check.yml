@@ -17,9 +17,9 @@ jobs:
       uses: actions/cache@v1
       with:
         path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
-        key: ${{ runner.os }}-npm-${{ github.repository }}-${{ env.branch-name }}-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-npm-${{ github.repository }}-${{ github.ref }}-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
-            ${{ runner.os }}-npm-${{ github.repository }}-${{ env.branch-name }}-
+            ${{ runner.os }}-npm-${{ github.repository }}-${{ github.ref }}-
             ${{ runner.os }}-npm-${{ github.repository }}
 
     - name: Install Dependencies
