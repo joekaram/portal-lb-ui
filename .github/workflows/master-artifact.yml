@@ -1,4 +1,4 @@
-name: Master branch check and artifact creation
+name: Master branch check and artifact generation
 
 on:
   push:
@@ -44,9 +44,3 @@ jobs:
       with:
         name: dist
         path: dist
-    
-    - name: Archive code coverage results
-      uses: actions/upload-artifact@v1
-      with:
-        name: code-coverage-report
-        path: output/test/code-coverage.html
