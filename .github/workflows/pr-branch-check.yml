@@ -1,0 +1,40 @@
+name: PR branch check
+
+on: 
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build_and_test:
+    name: Build artifact and run test suites
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '11.x'
+
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+        key: ${{ runner.os }}-npm-${{ github.repository }}-${{ github.head_ref }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+            ${{ runner.os }}-npm-${{ github.repository }}-${{ github.head_ref }}-
+            ${{ runner.os }}-npm-${{ github.repository }}
+
+    - name: Install Dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm ci
+                
+    - name: Build
+      run: npm run build
+
+    - name: Unit Test
+      run: npm run test:unit
+
+    - name: End-to-End Test
+      run: npm run test:e2e
