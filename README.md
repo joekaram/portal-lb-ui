@@ -1,5 +1,5 @@
 # Portal LB UI
-![](https://github.com/joekaram/portal-lb-ui/workflows/.github/workflows/master-artifact.yml/badge.svg)
+![](https://github.com/joekaram/portal-lb-ui/workflows/Master%20branch%20check%20and%20artifact%20generation/badge.svg)
 
 Portal LB UI is the user interface which contains all services provided by the Lebanese government.
 

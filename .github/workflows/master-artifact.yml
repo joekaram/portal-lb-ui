@@ -24,7 +24,7 @@ jobs:
         key: ${{ runner.os }}-npm-${{ github.repository }}-${{ github.ref }}-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
             ${{ runner.os }}-npm-${{ github.repository }}-${{ github.ref }}-
-            ${{ runner.os }}-npm-${{ github.repository }}
+            ${{ runner.os }}-npm-${{ github.repository }}-
 
     - name: Install Dependencies
       if: steps.cache.outputs.cache-hit != 'true'
